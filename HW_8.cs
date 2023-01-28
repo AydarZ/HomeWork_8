@@ -308,74 +308,75 @@
 // 11 16 15 06
 // 10 09 08 07
 
-// int GetNumber(string message)
-// {
-//     System.Console.WriteLine("Введите " + message);
-//     return Convert.ToInt32(Console.ReadLine());
-// }
+int GetNumber(string message)
+{
+    System.Console.WriteLine("Введите " + message);
+    return Convert.ToInt32(Console.ReadLine());
+}
 
-// void FillArraySpirally(int[,] array)
-// {
-//     int digit = 1;
-//     int length = array.GetLength(1);
-//     int width = array.GetLength(0);
-//     for (int i = 0; i < width; i++)
-//     {
-//         for (int j = i; j < length; j++) // заполняем, двигаясь вправо
-//         {
-//             array[i, j] = digit;
-//             digit++;
-//         }
-//         for (int k = i + 1, j = length - 1; k < width; k++) // заполняем, двигаясь вниз
-//         {
-//             if (array[k, j] == 0) //проверка: нет ли снизу заполненных значений
-//             {
-//                 array[k, j] = digit;
-//                 digit++;
-//             }
-//             else return;
-//         }
-//         length--;
-//         for (int k = width - 1, j = length - 1; j >= 0 + i; j--) // заполняем, двигаясь влево
-//         {
-//             if (array[k, j] == 0) //проверка: нет ли слева заполенных значений
-//             {
-//                 array[k, j] = digit;
-//                 digit++;
-//             }
-//             else return;
-//         }
-//         width--;
-//         for (int k = width - 1, j = 0 + i; k > i; k--) // заполняем, двигаясь вверх
-//         {
-//             if (array[k, j] == 0) //проверка: нет ли сверху заполненных значений
-//             {
-//             array[k, j] = digit;
-//             digit++;
-//             }
-//             else return;
-//         }
+void FillArraySpirally(int[,] array)
+{
+    int digit = 1;
+    int length = array.GetLength(1);
+    int width = array.GetLength(0);
+    for (int i = 0; i < width; i++)
+    {
+        for (int j = i; j < length; j++) // заполняем, двигаясь вправо
+        {
+            array[i, j] = digit;
+            digit++;
+        }
+        for (int k = i + 1, j = length - 1; k < width; k++) // заполняем, двигаясь вниз
+        {
+            if (array[k, j] == 0) //проверка: нет ли снизу заполненных значений
+            {
+                array[k, j] = digit;
+                digit++;
+            }
+            else return;
+        }
+        length--;
+        for (int k = width - 1, j = length - 1; j >= 0 + i; j--) // заполняем, двигаясь влево
+        {
+            if (array[k, j] == 0) //проверка: нет ли слева заполенных значений
+            {
+                array[k, j] = digit;
+                digit++;
+            }
+            else return;
+        }
+        width--;
+        for (int k = width - 1, j = 0 + i; k > i; k--) // заполняем, двигаясь вверх
+        {
+            if (array[k, j] == 0) //проверка: нет ли сверху заполненных значений
+            {
+            array[k, j] = digit;
+            digit++;
+            }
+            else return;
+        }
 
-//     }
-// }
+    }
+}
 
-// void PrintArray(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             System.Console.Write(string.Format("{0,5}", array[i, j] + " "));
-//         }
-//         System.Console.WriteLine();
-//     }
-//     System.Console.WriteLine();
-// }
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j]<10)  System.Console.Write(string.Format("{0,5}", "0" + array[i, j] + " "));
+            else System.Console.Write(string.Format("{0,5}", array[i, j] + " "));
+        }
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
 
 
 
-// int rows = GetNumber("количество строк массива");
-// int columns = GetNumber("количество столбцов массива");
-// int[,] Array = new int[rows, columns];
-// FillArraySpirally(Array);
-// PrintArray(Array);
+int rows = GetNumber("количество строк массива");
+int columns = GetNumber("количество столбцов массива");
+int[,] Array = new int[rows, columns];
+FillArraySpirally(Array);
+PrintArray(Array);
